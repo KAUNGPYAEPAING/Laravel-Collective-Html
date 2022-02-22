@@ -1,0 +1,40 @@
+Web Link -----  https://laravelcollective.com/docs/6.x/html
+
+
+cmd - composer install
+
+cmd - composer require laravelcollective/html
+
+In composer.json file
+
+    "require": {
+        "php": "^7.3|^8.0",
+        "fruitcake/laravel-cors": "^2.0",
+        "guzzlehttp/guzzle": "^7.0.1",
+        "laravel/framework": "^8.65",
+        "laravel/sanctum": "^2.11",
+        "laravel/tinker": "^2.5",
+        "laravelcollective/html": "^6.3" //Important
+    },
+    
+In Laravel V8, config/app.php
+
+Add in providers
+        Collective\Html\HtmlServiceProvider::class,
+ 
+ Add in aliases
+         'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
+        
+ ___________________________________________
+ Testing 
+  
+    {!! Form::open() !!}
+        <input type="text" name="Title" placeholder="Enter Title">
+        
+        <input type="text" name="body" placeholder="Enter Content">
+        {{ csrf_field() }}
+        <input type="submit" name="submit">
+    {!! Form::close() !!}
+    
+    Outcome:: No error
