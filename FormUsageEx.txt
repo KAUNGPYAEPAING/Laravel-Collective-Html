@@ -1,7 +1,29 @@
-    {!! Form::open(['method'=>'POST', 'action'=>'App\Http\Controllers\PostsController@store']) !!}
+ //Create
+ {!! Form::open(['method'=>'POST', 'action'=>'App\Http\Controllers\PostsController@store']) !!}
         <input type="text" name="Title" placeholder="Enter Title">
         
         <input type="text" name="body" placeholder="Enter Content">
         {{ csrf_field() }}
         <input type="submit" name="submit">
+    {!! Form::close() !!}
+
+
+//Update
+    {!! Form::model($post, ['method'=>'PATCH', 'action'=>['App\Http\Controllers\PostsController@update', $post->id]]) !!}            
+    {{-- {{ csrf_field() }} Only Need without Pakage --}}
+
+        {!! Form::label('title', 'Title:') !!}
+        {!! Form::text('Title', null, ['class'=>'form-control']) !!}
+
+        {!! Form::label('body', 'Body:') !!}
+        {!! Form::text('body', null, ['class'=>'form-control']) !!}
+    </div>
+
+        {!! Form::submit('Update', ['class'=>'btn btn-info']) !!}
+        
+    {!! Form::close() !!}
+
+//Delete
+    {!! Form::model($post, ['method'=>'DELETE', 'action'=>['App\Http\Controllers\PostsController@destroy', $post->id]]) !!}      
+        {!! Form::submit('Delete', ['class'=>'btn btn-danger']) !!}
     {!! Form::close() !!}
