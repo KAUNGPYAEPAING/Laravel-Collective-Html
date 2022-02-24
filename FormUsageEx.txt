@@ -27,3 +27,14 @@
     {!! Form::model($post, ['method'=>'DELETE', 'action'=>['App\Http\Controllers\PostsController@destroy', $post->id]]) !!}      
         {!! Form::submit('Delete', ['class'=>'btn btn-danger']) !!}
     {!! Form::close() !!}
+
+
+//Input File
+
+    {!! Form::open(['method'=>'POST', 'action'=>'App\Http\Controllers\PostsController@store', 'files' =>true]) !!}      //need to write 'files'=>true   in order to accept file
+
+        <div class="form-group">
+
+            {!! Form::file('file',  ['class'=>'form-control']) !!}
+        </div>
+    {!! Form::close() !!}
